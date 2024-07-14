@@ -1,4 +1,8 @@
 import dotenv from "dotenv";
+import express, { Application } from "express";
+import bootstrap from "./boostrap";
+
+const app: Application = express();
 
 dotenv.config({
   path: `${
@@ -7,3 +11,5 @@ dotenv.config({
       : ".env.production"
   }`,
 });
+
+bootstrap(app);
