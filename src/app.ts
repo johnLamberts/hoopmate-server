@@ -1,6 +1,7 @@
 import dotenv from "dotenv";
 import express, { Application } from "express";
 import bootstrap from "./boostrap";
+import cors from "cors";
 
 const app: Application = express();
 
@@ -11,5 +12,14 @@ dotenv.config({
       : ".env.production"
   }`,
 });
+
+// cors
+app.use(
+  cors({
+    origin: process.env.ORIGIN,
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+    credentials: true,
+  })
+);
 
 bootstrap(app);
